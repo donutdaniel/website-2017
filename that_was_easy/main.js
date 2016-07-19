@@ -1,5 +1,13 @@
+var Beat = new Audio("caillou.mp3");
+function playSound(){
+    Beat.play();
+}
+$("#button").on("click", playSound);
+
+
+
 var sayThatWasEasy = function(){
-    var thatWasEasy = new Audio("caillou.mp3");
+    var thatWasEasy = new Audio("that_was_easy.mp3");
     thatWasEasy.play();
 }
 $("#Easy").on("click", sayThatWasEasy);

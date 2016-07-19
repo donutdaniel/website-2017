@@ -1,5 +1,5 @@
 var sayThatWasEasy = function(){
-    var thatWasEasy = new Audio("that_was_easy.mp3");
+    var thatWasEasy = new Audio("caillou.mp3");
     thatWasEasy.play();
 }
 $("#Easy").on("click", sayThatWasEasy);

@@ -16,7 +16,9 @@ h1{
 }
 
 #incI,#incM{
-    width: 100px;
-    height: 20px;
-    background:rgb(255,234,12);
+    font-size:100%;
+    width: 200px;
+    height: 30px;
+    background:rgb(235,234,12);
+    border-color:transparent;
 }

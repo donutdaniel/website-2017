@@ -7,8 +7,8 @@ var blobs = [];
 var speedUp;
 
 function setup() {
-    createCanvas(800, 600);
-    circleDiameter = 80;
+    createCanvas(1500, 750);
+    circleDiameter = 100;
     circleAIdiameter = 30;
     circle = {
         x: width / 2,
@@ -19,7 +19,14 @@ function setup() {
         return {
             x: 0,
             y: 0,
+            r: Math.random()*255,
+            g: Math.random()*255,
+            b: Math.random()*255,
+            a: 50+(Math.random()*205),
+            diameter: Math.random()*50,
             theta: (Math.random()*(2*Math.PI)),
+            speed: (Math.random()/50),
+            distance: 80+(Math.random()*300),
             // move: function() {
             //     if ((circle.x - circleAI.x) > 100 || (circle.x - circleAI.x) > -100) {
             //         circleAI.x += 2;
@@ -35,9 +42,9 @@ function setup() {
             //     }
             // },
             orbit: function() {
-                this.theta += 0.001;
-                this.x = circle.x + (Math.cos(this.theta) * 100);
-                this.y = circle.y + (Math.sin(this.theta) * 100);
+                this.theta += this.speed;
+                this.x = circle.x + (Math.cos(this.theta) * this.distance);
+                this.y = circle.y + (Math.sin(this.theta) * this.distance);
             }
         }
     }
@@ -61,12 +68,13 @@ function draw() {
         circle.x -= (3 + speedUp);
     if (keyIsDown(68))
         circle.x += (3 + speedUp);
-    fill(123, 123, 255);
+    fill(0);
     background(180);
     //noStroke();
     ellipse(circle.x, circle.y, circleDiameter, circleDiameter);
     for (var n = 0; n < blobs.length; n++){
-        ellipse(blobs[n].x, blobs[n].y, circleAIdiameter, circleAIdiameter);
+        fill(blobs[n].r,blobs[n].g,blobs[n].b,blobs[n].a)
+        ellipse(blobs[n].x, blobs[n].y, blobs[n].diameter, blobs[n].diameter);
         blobs[n].orbit();
     }
 }

@@ -70,7 +70,9 @@ function draw(){
     }
     }
     
-    
+    if(player.position.y<0){
+        isGameOver=true;
+    }
     player.collide(obstacles,stopFall);
     drawSprites();
 }

@@ -11,7 +11,7 @@ function setup(){
     enemies = new Group();
     player = createSprite(width/2,height-25,50,50);
     for(var i=0;i<10;i++){
-        var enemy = createSprite(random(5,width-5),-15,30,30);
+        var enemy = createSprite(random(5,width-5),random(-500,-15),30,30);
         enemies.add(enemy);
     }
     gravity= 0.4; 
@@ -49,12 +49,12 @@ function draw(){
     jump();
     
     for(var i=0;i<enemies.length;i++){
-    enemies[i].position.y+=1.5;
+        enemies[i].position.y+=1.5;
+            if (enemies[i].overlap(player,storeID(i))) {
+                player.setVelocity(0,0);
+                isGameOver=true;
     }
     }
-    if (enemies.overlap(player,storeID)) {
-        player.setVelocity(0,0)
-        isGameOver=true;
     }
     
     player.collide(obstacles,stopFall);
@@ -77,7 +77,8 @@ function gameOver(){
     // }
     if(keyIsPressed){
         obstacles.add(player);
-        obstacles.add(enemies[deleteID]);
+        obstacles.add(enemies.get(deleteID));
+        enemies.get(deleteID).remove();
         create();
     }
 }
@@ -99,6 +100,6 @@ function stopFall(){
     player.velocity.y=0;
 }
 
-function storeID(objA,objB){
-    deleteID=objB.get(i);
+function storeID(i){
+    deleteID=i;
 }

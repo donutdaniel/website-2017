@@ -1,6 +1,8 @@
 var player;
 var enemies;
+var numEnemies = 10;
 var enemyTypeC;
+var numEnemiesTypeC = 15;
 var isGameOver;
 var gravity;
 var obstacles;
@@ -9,10 +11,17 @@ var deleteID;
 function setup(){
     createCanvas(1400,700);
     enemies = new Group();
+    enemiesTypeC = new Group();
     player = createSprite(width/2,height-25,50,50);
-    for(var i=0;i<10;i++){
+    for(var i=0;i<numEnemies;i++){
         var enemy = createSprite(random(5,width-5),random(-500,-15),30,30);
+        enemy.shapeColor=(255);
         enemies.add(enemy);
+    }
+    for(var i=0;i<numEnemiesTypeC;i++){
+        var enemy = createSprite(random(5,width-5),random(-500,-15),30,30);
+        enemy.shapeColor=(0);
+        enemiesTypeC.add(enemy);
     }
     gravity= 0.4; 
     isGameOver = false;
@@ -22,6 +31,10 @@ function setup(){
 function create(){
     player = createSprite(width/2,height-25,50,50);
     // enemy = createSprite(random(5,width-5),-15,30,30);
+    for(var i=0;i<enemies.length;i++){
+        enemies[i].position.x=random(5,width-5);
+        enemies[i].position.y=random(-500,-15);
+    }
     isGameOver = false;
 }
 
@@ -56,6 +69,7 @@ function draw(){
     }
     }
     }
+    
     
     player.collide(obstacles,stopFall);
     drawSprites();

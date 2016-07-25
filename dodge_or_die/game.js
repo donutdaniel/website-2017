@@ -41,7 +41,7 @@ function draw() {
         enemyMoveCheck();
         enemyTypeCMoveCheck();
         playerMove();
-
+        enemyMove();
         enemyWrap();
         enemyTypeCWrap();
         player.collide(obstacles, determineSide);
@@ -122,11 +122,15 @@ function playerMove() {
 }
 
 function enemyMove() {
-    if(keyIsDown(Left_Arrow)){
-        
+    if(keyIsDown(LEFT_ARROW)){
+        for(var i=0;i<enemies.length;i++){
+            enemies[i].position.x--;
+        }
     }
-    if(keyIsDown(Right_Arrow)){
-        
+    if(keyIsDown(RIGHT_ARROW)){
+        for(var i=0;i<enemies.length;i++){
+            enemies[i].position.x++;
+        }
     }
 }
 

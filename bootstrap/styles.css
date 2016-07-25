@@ -1,0 +1,27 @@
+head {
+    
+}
+
+body {
+    background-color: #912CEE;
+    text-align: center;
+    font-family: arial;
+    color: white;
+}
+
+#B{
+    font-size: 500%;
+    border: 1px white;
+    
+}
+
+#dl{
+    font-size: 100%;
+    color: yellow;
+    border: 1px yellow;
+    
+}
+
+#vers{
+    font-size: 80%;
+}

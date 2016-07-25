@@ -11,14 +11,14 @@ body {
 
 #B{
     font-size: 500%;
-    border: 1px white;
-    
+    border-style: solid;
 }
 
 #dl{
     font-size: 100%;
     color: yellow;
     border: 1px yellow;
+    border-style: solid;
     
 }
 

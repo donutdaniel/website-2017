@@ -2,6 +2,8 @@ var clickID=0;
 var clickIDtext="Bomb";
 var bombs;
 var bombImage;
+var TBEx;
+var TBEy;
 
 function preload(){
     bombImage = loadImage("bomb.png");
@@ -32,8 +34,9 @@ function keyPressed(){
 function mouseClicked(){
     if(clickID===0){
         placeBombs();
-    } else if(clickID==1){
-        detonateBombs();
+    }
+    if(clickID===1){
+        detonateBombs(mouseX,mouseY);
     }
 }
 
@@ -43,12 +46,38 @@ function displayText(){
     text("Selected Item: "+clickIDtext,10,30);
 }
 
-function detonateBombs(){
-    
+function detonateBombs(x,y){
+    for(var i=0;i<bombs.length;i++){
+        if(bombs[i].overlapPoint(x,y)){
+            bombs[i].changeAnimation("explode");
+            bombs[i].life=30;
+            if(bombs[i].overlap(bombs,poop)){
+                detonateBombs(TBEx,TBEy);
+            }
+        }
+    }
 }
 
 function placeBombs(){
     var bomb = createSprite(mouseX,mouseY,0,0);
     bomb.addImage(bombImage);
+    bomb.addAnimation("explode","explosion.png");
     bombs.push(bomb);
+}
+
+function checkArea(n){
+var x;
+var y;
+    for(var i=1;i<300;i++){
+        for(var z=0;z<(2*Math.PI);z+=0.1){
+            x=bombs[n].position.x+(Math.cos(z)*i);
+            y=bombs[n].position.y+(Math.sin(z)*i);
+            detonateBombs(x,y);
+        }
+    }
+}
+
+function poop(spriteA,spriteB){
+    TBEx=spriteB.position.x;
+    TBEy=spriteB.position.y;
 }

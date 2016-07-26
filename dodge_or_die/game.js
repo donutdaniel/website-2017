@@ -4,6 +4,8 @@ var numEnemies = 20;
 var enemyTypeC;
 var numEnemiesTypeC = 5;
 var isGameOver;
+var isGameLost;
+var isGameWon;
 var gravity;
 var obstacles;
 var noInclude;
@@ -12,6 +14,8 @@ function setup() {
     createCanvas(1400, 700);
     gravity = 0.4;
     isGameOver = false;
+    isGameLost = false;
+    isGameWon = false;
     enemies = new Group();
     enemiesTypeC = new Group();
     obstacles = new Group();
@@ -33,7 +37,9 @@ function setup() {
 
 function draw() {
     background(50, 100, 180);
-    if (isGameOver) {
+    if (isGameLost) {
+        gameLost();
+    } else if(isGameOver){
         gameOver();
     }
     else {
@@ -46,10 +52,8 @@ function draw() {
         enemyTypeCWrap();
         player.collide(obstacles, determineSide);
     }
-
-    if (player.position.y < 0) {
-        isGameOver = true;
-    }
+    checkLost();
+    checkWon();
     drawSprites();
 }
 
@@ -58,7 +62,7 @@ function gameOver() {
     textAlign(CENTER);
     fill("white");
     text("Game Over!", width / 2, height / 2);
-    text("Press any key to restart", width / 2, (height / 2) + 15)
+    text("Press any key to restart", width / 2, (height / 2) + 15);
         // no multiple sprites
         // if(keyIsPressed){
         //     isGameOver=false;
@@ -73,6 +77,22 @@ function gameOver() {
         }
         create();
     }
+}
+
+function gameLost() {
+    background(0, 200);
+    textAlign(CENTER);
+    fill("white");
+    text("Game Over!", width / 2, height / 2);
+    text("There are no more white blocks. You have lost.", width / 2, (height / 2) + 15);
+    text("Press R to restart", width/2, (height/2)+30);
+    if(keyIsDown(82)){
+        setup();
+    }
+}
+
+function gameWon() {
+    
 }
 
 function create() {
@@ -181,5 +201,17 @@ function enemyTypeCMoveCheck() {
 function removeObstacles() {
     for (var i = obstacles.length - 1; i >= 0; i--) {
         obstacles.get(i).remove();
+    }
+}
+
+function checkLost(){
+    if(enemies.length===0){
+        isGameLost=true;
+    }
+}
+
+function checkWon(){
+    if (player.position.y < 0) {
+        isGameWon = true;
     }
 }

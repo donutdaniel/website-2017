@@ -10,8 +10,8 @@ var noInclude;
 
 function setup() {
     createCanvas(1400, 700);
-    gravity=0.4;
-    isGameOver=false;
+    gravity = 0.4;
+    isGameOver = false;
     enemies = new Group();
     enemiesTypeC = new Group();
     obstacles = new Group();
@@ -68,7 +68,7 @@ function gameOver() {
         //     enemy.position.x=random(5,width-5);
         // }
     if (keyIsPressed) {
-        if(!noInclude){
+        if (!noInclude) {
             obstacles.add(player);
         }
         create();
@@ -122,13 +122,13 @@ function playerMove() {
 }
 
 function enemyMove() {
-    if(keyIsDown(LEFT_ARROW)){
-        for(var i=0;i<enemies.length;i++){
+    if (keyIsDown(LEFT_ARROW)) {
+        for (var i = 0; i < enemies.length; i++) {
             enemies[i].position.x--;
         }
     }
-    if(keyIsDown(RIGHT_ARROW)){
-        for(var i=0;i<enemies.length;i++){
+    if (keyIsDown(RIGHT_ARROW)) {
+        for (var i = 0; i < enemies.length; i++) {
             enemies[i].position.x++;
         }
     }
@@ -149,7 +149,7 @@ function enemyMoveCheck() {
         if (enemies[i].overlap(player)) {
             player.setVelocity(0, 0);
             enemies.get(i).remove();
-            noInclude=false;
+            noInclude = false;
             isGameOver = true;
         }
     }
@@ -172,14 +172,14 @@ function enemyTypeCMoveCheck() {
             //enemiesTypeC.get(i).remove();
             removeObstacles();
             player.remove();
-            noInclude=true;
+            noInclude = true;
             isGameOver = true;
         }
     }
 }
 
-function removeObstacles(){
-    for(var i=obstacles.length-1;i>=0;i--){
+function removeObstacles() {
+    for (var i = obstacles.length - 1; i >= 0; i--) {
         obstacles.get(i).remove();
     }
 }

@@ -2,11 +2,12 @@ var pointsData = firebase.database().ref();
 var points = [];
 var canvas;
 var selectPaint = 0;
+var aniEnable = false;
 
 var lineX, lineY;
 
 function setup() {
-    canvas = createCanvas(windowWidth,windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight);
     background(255);
     fill(0);
     lineX = width / 2;
@@ -16,7 +17,6 @@ function setup() {
     })
     canvas.mousePressed(drawPoint);
     canvas.mouseMoved(drawPointIfMousePressed);
-    frameRate(200);
 }
 
 function draw() {
@@ -30,11 +30,14 @@ function draw() {
         }
         else if (selectPaint === 1) {
             if (keyIsDown(SHIFT)) {
-                lineX=mouseX;
-                lineY=mouseY;
+                lineX = mouseX;
+                lineY = mouseY;
             }
-                line(point.x, point.y, lineX, lineY);
+            line(point.x, point.y, lineX, lineY);
         }
+    }
+    if (aniEnable) {
+        animate();
     }
 }
 
@@ -52,10 +55,25 @@ function drawPointIfMousePressed() {
 }
 
 $("#saveDrawing").on("click", saveDrawing);
+
 $("#clearDrawing").on("click", clearDrawing);
+
+$("#animate").on("click", function() {
+    if (aniEnable) {
+        aniEnable = false;
+    } else {
+        aniEnable = true;
+    }
+    for (var i = 0; i < points.length; i++) {
+        points[i].velocityX = (Math.random() * 4) - 2;
+        points[i].velocityY = (Math.random() * 4) - 2;
+    }
+})
+
 $("#dots").on("click", function() {
     selectPaint = 0;
 });
+
 $("#line").on("click", function() {
     selectPaint = 1;
 });
@@ -65,6 +83,14 @@ function saveDrawing() {
 }
 
 function clearDrawing() {
+    aniEnable = false;
     pointsData.remove();
     points = [];
+}
+
+function animate() {
+    for (var i = 0; i < points.length; i++) {
+        points[i].x += points[i].velocityX;
+        points[i].y += points[i].velocityY;
+    }
 }

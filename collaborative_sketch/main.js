@@ -16,6 +16,7 @@ function setup() {
     })
     canvas.mousePressed(drawPoint);
     canvas.mouseMoved(drawPointIfMousePressed);
+    frameRate(200);
 }
 
 function draw() {
@@ -23,6 +24,7 @@ function draw() {
     for (var i = 0; i < points.length; i++) {
         var point = points[i];
         if (selectPaint === 0) {
+            ellipse(point.x, point.y, 5, 5);
             ellipse(point.x, point.y, 5, 5);
             ellipse(point.x, point.y, 5, 5);
         }

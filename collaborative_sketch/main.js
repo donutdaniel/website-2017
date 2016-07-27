@@ -61,7 +61,8 @@ $("#clearDrawing").on("click", clearDrawing);
 $("#animate").on("click", function() {
     if (aniEnable) {
         aniEnable = false;
-    } else {
+    }
+    else {
         aniEnable = true;
     }
     for (var i = 0; i < points.length; i++) {
@@ -92,5 +93,14 @@ function animate() {
     for (var i = 0; i < points.length; i++) {
         points[i].x += points[i].velocityX;
         points[i].y += points[i].velocityY;
+        // for (var n = 1; n < 10; n++) {
+        //     for (var t = 0; t < 2 * Math.PI; t++) {
+        //         var newX = points[i].x + (Math.cos(t) * n);
+        //         var newY = points[i].y + (Math.sin(t) * n);
+        //         if(get(newX,newY)===0){
+                    
+        //         }
+        //     }
+        // }
     }
 }

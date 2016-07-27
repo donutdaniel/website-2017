@@ -2,7 +2,6 @@ var player;
 var playerImage;
 var backgroundImage;
 var gravity;
-var 
 
 function preload() {
     playerImage = loadImage("mongoose.png");

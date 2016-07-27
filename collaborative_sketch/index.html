@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Collaborative Sketch</title>
+</head>
+
+<body>
+    <div id="controls">
+        <button id="saveDrawing">Save to Computer</button>
+        <button id="clearDrawing">DELETE DRAWING</button>
+        <button id="dots">Dots</button>
+        <button id="line">Line</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCZONCiV_MBdqaKq8O9bJmZjnuDwlfQKfA",
+            authDomain: "collaborative-sketch.firebaseapp.com",
+            databaseURL: "https://collaborative-sketch.firebaseio.com",
+            storageBucket: "collaborative-sketch.appspot.com",
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.23/p5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

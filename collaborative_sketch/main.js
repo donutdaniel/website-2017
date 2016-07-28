@@ -3,7 +3,6 @@ var points = [];
 var canvas;
 var selectPaint = 0;
 var aniEnable = false;
-
 var lineX, lineY;
 
 function setup() {
@@ -11,7 +10,7 @@ function setup() {
     background(255);
     fill(0);
     lineX = width / 2;
-    lineY = height / 2
+    lineY = height / 2;
     pointsData.on("child_added", function(point) {
         points.push(point.val());
     })
@@ -24,15 +23,16 @@ function draw() {
     for (var i = 0; i < points.length; i++) {
         var point = points[i];
         if (selectPaint === 0) {
-            ellipse(point.x, point.y, 5, 5);
-            ellipse(point.x, point.y, 5, 5);
-            ellipse(point.x, point.y, 5, 5);
+            noStroke();
+            ellipse(point.x, point.y, 3, 3);
         }
         else if (selectPaint === 1) {
             if (keyIsDown(SHIFT)) {
                 lineX = mouseX;
                 lineY = mouseY;
             }
+            stroke(0);
+            strokeWeight(0.2);
             line(point.x, point.y, lineX, lineY);
         }
     }
@@ -93,14 +93,15 @@ function animate() {
     for (var i = 0; i < points.length; i++) {
         points[i].x += points[i].velocityX;
         points[i].y += points[i].velocityY;
-        // for (var n = 1; n < 10; n++) {
-        //     for (var t = 0; t < 2 * Math.PI; t++) {
-        //         var newX = points[i].x + (Math.cos(t) * n);
-        //         var newY = points[i].y + (Math.sin(t) * n);
-        //         if(get(newX,newY)===0){
-                    
-        //         }
-        //     }
-        // }
+        for (var n = 0; n < points.length; n++) {
+            if (n != i) {
+                var dis = dist(points[i].x, points[i].y, points[n].x, points[n].y);
+                if (dis < 100) {
+                    stroke(0);
+                    strokeWeight(0.1);
+                    line(points[i].x, points[i].y, points[n].x, points[n].y);
+                }
+            }
+        }
     }
 }

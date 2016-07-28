@@ -22,7 +22,7 @@ function setup() {
     player = createSprite(playerImage.width / 2, height - (playerImage.height / 2), 0, 0);
     player.addImage(playerImage);
     enemies = new Group();
-    gravity = 0.;
+    gravity = 0.4;
 
     for (var i = 0; i < enemiesNum; i++) {
         var rat = createSprite(width / 2 + (Math.random() * 5000), ((Math.random() * 0.6) + 0.3) * height, 0, 0);

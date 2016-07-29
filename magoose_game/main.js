@@ -101,11 +101,19 @@ function updateBackground() {
         if (player.position.x - backgroundSprite1.position.x > backgroundImage.width) {
             backgroundSprite1.position.x = backgroundSprite2.position.x + (backgroundImage.width);
         }
-        else if (player.position.x - backgroundSprite1.position.x < backgroundImage.width) {
-            backgroundSprite1.position.x = backgroundSprite2.position.x - (backgroundImage.width);
+        else if (player.position.x - backgroundSprite2.position.x > backgroundImage.width) {
+            backgroundSprite2.position.x = backgroundSprite1.position.x + (backgroundImage.width);
         }
     }
 
+    if (keyIsDown(65)) {
+        if (player.position.x - backgroundSprite1.position.x < -backgroundImage.width) {
+            backgroundSprite1.position.x = backgroundSprite2.position.x - (backgroundImage.width);
+        }
+        else if (player.position.x - backgroundSprite2.position.x < -backgroundImage.width) {
+            backgroundSprite2.position.x = backgroundSprite1.position.x - (backgroundImage.width);
+        }
+    }
     // if (player.position.x - backgroundSprite2.position.x > backgroundImage.width) {
     //     backgroundSprite2.position.x = backgroundSprite1.position.x + (backgroundImage.width);
     // }

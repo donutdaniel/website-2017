@@ -1,21 +1,32 @@
 var player;
 var playerImage;
 var flipImage;
-var enemies;
-var enemiesNum = 20;
-var enemiesRange = 5000;
+var food;
+var foodNum;
+var foodRange;
 var ratImage;
 var leafImage;
 var treeImage;
 var backgroundImage;
 var gravity;
-var score = 0;
+var score;
 var canvas;
-var checkBound = 0;
+var checkBound;
 var backgroundSprite1;
 var backgroundSprite2;
-var level = 1;
+var level;
 var myAudio = new Audio("music.mp3"); 
+var lose;
+//enemies
+var enemies;
+var enemyImage;
+var numEnemies;
+var rangeEnemies;
+//projectiles
+var projectiles;
+var projectileImage;
+var projectileStored;
+var keyDown;
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
@@ -29,9 +40,24 @@ function preload() {
     ratImage = loadImage("Images/rat.png");
     leafImage = loadImage("Images/leaf.png");
     treeImage = loadImage("Images/palmTree.png");
+    //enemies
+    enemyImage = loadImage("Images/cactus.png");
+    //projectiles
+    projectileImage = loadImage("Images/projectile.png")
 }
 
 function setup() {
+    myAudio.currentTime = 0;
+    myAudio.play();
+    foodNum = 20;
+    foodRange = 5000;
+    score = 0;
+    checkBound = 0;
+    level = 1;
+    lose = false;
+    //rest
+    playerImage = loadImage("Images/mongoose.png");
+    flipImage = loadImage("Images/mongoose.1.png");
     canvas = createCanvas(1500, 700);
     backgroundSprite1 = createSprite(width / 2, height / 2, 0, 0);
     backgroundSprite1.addImage(backgroundImage);
@@ -40,50 +66,123 @@ function setup() {
     player = createSprite(playerImage.width / 2, height - (playerImage.height / 2), 0, 0);
     player.addAnimation("front",playerImage);
     player.addAnimation("back",flipImage);
-    enemies = new Group();
+    food = new Group();
     gravity = 0.4;
-
-
-    for (var i = 0; i < enemiesNum; i++) {
-        var rat = createSprite(width / 2 + (Math.random() * enemiesRange), ((Math.random() * 0.5) + 0.4) * height, 0, 0);
+    //enemies
+    enemies = new Group();
+    numEnemies = 20;
+    rangeEnemies = 3*foodRange;
+    projectiles = new Group();
+    projectileStored = 0;
+    keyDown = false;
+    for (var i = 0; i < foodNum; i++) {
+        var rat = createSprite(width / 2 + (Math.random() * foodRange), ((Math.random() * 0.5) + 0.4) * height, 0, 0);
         rat.addImage(ratImage);
-        enemies.push(rat);
+        food.push(rat);
+    }
+    //init enemies
+    for (var i = 0; i < numEnemies; i++) {
+        var enemy = createSprite(width + (Math.random() * rangeEnemies), height - enemyImage.height/4 + 10, 0, 0);
+        enemy.addImage(enemyImage);
+        enemies.push(enemy);
     }
 }
 
 function draw() {
-    clear();
-    playerMove();
-    jump();
-    enemies.overlap(player, updateScore);
-    camera.position.x = player.position.x + (width / 4);
-    updateBackground();
-    drawSprites();
-    textSize(20);
-    text("Score: " + score, camera.position.x - (width / 2)+10, 25);
-    updateCollider();
-    
-    if (score >= enemiesNum * 2) {
-        checkBound = 0;
-    }
-    
-    if(score>=enemiesNum*3){
-        gameWon();
-    }
+    if(lose){
+        myAudio.pause();
+        background(0, 200);
+        textAlign(CENTER);
+        fill("white");
+        text("You Lost! Press R to try again", camera.position.x, camera.position.y);
+        if(keyIsDown(82)){
+            setup();
+        }
+    } else {
+        clear();
+        playerMove();
+        enemyMove();
+        jump();
+        playerShoot();
+        food.overlap(player, updateScore);
+        if(enemies.overlap(player)){
+            lose = true;
+        }
+        camera.position.x = player.position.x + (width / 4);
+        updateBackground();
+        drawSprites();
+        textSize(20);
+        text("Score: " + score, camera.position.x - (width / 2)+10, 25);
+        text("Projectiles Left: " + projectileStored, camera.position.x - (width / 2)+10, 50);
+        updateCollider();
+        
+        if (score >= foodNum * 2) {
+            checkBound = 0;
+        }
+        
+        if(score>=foodNum*3){
+            gameWon();
+        }
 
-    if ((score >= enemiesNum) && (checkBound === 0)) {
-        lvlUp();
+        if ((score >= foodNum) && (checkBound === 0)) {
+            lvlUp();
+        }
     }
     
 }
 
+function enemyMove(){
+    for(var i=0; i<numEnemies; i++){
+        if(Math.abs(player.position.x - enemies.get(i).position.x) <= width){
+            enemies.get(i).position.x -= 3.5;
+        }
+    }
+}
+
+function playerShoot(){
+    for(var i=0; i<projectiles.size(); i++){
+        projectiles.get(i).position.x += 10;
+    }
+    for(var i=0; i<projectiles.size(); i++){
+        if(Math.abs(player.position.x - projectiles.get(i).position.x) >= width){
+            projectiles.get(i).remove();
+            projectiles.splice(i, 1);
+            i--;
+        }
+    }
+    projectiles.overlap(enemies, bulletClash);
+}
+
+function bulletClash(spriteA, spriteB){
+    spriteA.remove();
+    spriteB.remove();
+}
+
+function keyPressed(){
+    if(keyCode === 32){
+        if(!keyDown && projectileStored > 0){
+            var projectile = createSprite(player.position.x, height - 50, 0, 0);
+            projectile.addImage(projectileImage);
+            projectiles.push(projectile);
+            keyDown = true;
+            projectileStored--;
+        }
+    }
+}
+
+function keyReleased(){
+    if(keyCode === 32){
+        keyDown = false;
+    }
+}
+
 function playerMove() {
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) {
-        player.position.x -= 3;
+        player.position.x -= 4;
         player.changeAnimation("back");
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) {
-        player.position.x += 3;
+        player.position.x += 4;
         player.changeAnimation("front");
     }
 
@@ -91,7 +190,7 @@ function playerMove() {
 
 function jump() {
     player.velocity.y += gravity;
-    if ((keyIsDown(32) || keyIsDown(UP_ARROW)) && player.velocity.y === gravity) {
+    if ((keyIsDown(87) || keyIsDown(UP_ARROW)) && player.velocity.y === gravity) {
         player.velocity.y = -16;
     }
 
@@ -104,6 +203,9 @@ function jump() {
 function updateScore(spriteA, spriteB) {
     score++;
     spriteA.remove();
+    if(score % 4 === 0){
+        projectileStored++;
+    }
 }
 
 function lvlUp() {
@@ -115,11 +217,11 @@ function lvlUp() {
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");
-        enemies = new Group();
-        for (var i = 0; i < enemiesNum; i++) {
-            var leaf = createSprite((player.position.x + (width / 2)) + (Math.random() * enemiesRange), ((Math.random() * 0.3) + 0.6) * height, 0, 0);
+        food = new Group();
+        for (var i = 0; i < foodNum; i++) {
+            var leaf = createSprite((player.position.x + (width / 2)) + (Math.random() * foodRange), ((Math.random() * 0.3) + 0.6) * height, 0, 0);
             leaf.addImage(leafImage);
-            enemies.push(leaf);
+            food.push(leaf);
         }
     }
     if (level === 3) {
@@ -129,11 +231,11 @@ function lvlUp() {
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");
-        enemies = new Group();
-        for (var i = 0; i < enemiesNum; i++) {
-            var tree = createSprite((player.position.x + (width / 2)) + (Math.random() * enemiesRange), ((Math.random() * 0.3) + 0.6) * height, 0, 0);
+        food = new Group();
+        for (var i = 0; i < foodNum; i++) {
+            var tree = createSprite((player.position.x + (width / 2)) + (Math.random() * foodRange), ((Math.random() * 0.3) + 0.6) * height, 0, 0);
             tree.addImage(treeImage);
-            enemies.push(tree);
+            food.push(tree);
         }
     }
 }
@@ -168,8 +270,8 @@ function gameWon(){
     textAlign(CENTER);
     fill("white");
     text("You Win! Yay!!!!!!", camera.position.x, camera.position.y);
-    // text("Press R to restart", camera.position.x, (camera.position.y)+30);
-    // if(keyIsDown(82)){
-    //     setup();
-    // }
+    text("Press R to restart", camera.position.x, (camera.position.y)+30);
+    if(keyIsDown(82)){
+        setup();
+    }
 }

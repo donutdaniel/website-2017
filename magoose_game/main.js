@@ -226,6 +226,7 @@ function lvlUp() {
             leaf.addImage(leafImage);
             food.push(leaf);
         }
+        projectileStored +=3 ;
     }
     if (level === 3) {
         checkBound++;
@@ -245,6 +246,7 @@ function lvlUp() {
         myAudio.play();
         backgroundSprite1.changeAnimation("second");
         backgroundSprite2.changeAnimation("second");
+        projectileStored += 10;
     }
 }
 

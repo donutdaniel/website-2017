@@ -73,10 +73,10 @@ function setup() {
     gravity = 0.4;
     //enemies
     enemies = new Group();
-    numEnemies = 25;
+    numEnemies = 20;
     rangeEnemies = 3*foodRange;
     projectiles = new Group();
-    projectileStored = 0;
+    projectileStored = 2;
     keyDown = false;
     for (var i = 0; i < foodNum; i++) {
         var rat = createSprite(width / 2 + (Math.random() * foodRange), ((Math.random() * 0.5) + 0.4) * height, 0, 0);
@@ -137,7 +137,7 @@ function draw() {
 function enemyMove(){
     for(var i=0; i<numEnemies; i++){
         if(Math.abs(player.position.x - enemies.get(i).position.x) <= width){
-            enemies.get(i).position.x -= 3;
+            enemies.get(i).position.x -= 2.5;
         }
     }
 }

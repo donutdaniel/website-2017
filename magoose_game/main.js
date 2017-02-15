@@ -34,12 +34,13 @@ myAudio.addEventListener('ended', function() {
 myAudio.play();
 
 function preload() {
-    playerImage = loadImage("Images/mongoose.png");
-    flipImage = loadImage("Images/mongoose.1.png");
+    //playerImage = loadImage("Images/mongoose.png");
+    //flipImage = loadImage("Images/mongoose.1.png");
     backgroundImage = loadImage("Images/background.png");
-    ratImage = loadImage("Images/rat.png");
-    leafImage = loadImage("Images/leaf.png");
-    treeImage = loadImage("Images/palmTree.png");
+    backgroundImage2 = loadImage("Images/Valentines/background.png");
+    ratImage = loadImage("Images/Valentines/carrot.png");
+    leafImage = loadImage("Images/Valentines/heart.png");
+    treeImage = loadImage("Images/Valentines/ZacEfron.png");
     //enemies
     enemyImage = loadImage("Images/cactus.png");
     //projectiles
@@ -56,13 +57,15 @@ function setup() {
     level = 1;
     lose = false;
     //rest
-    playerImage = loadImage("Images/mongoose.png");
-    flipImage = loadImage("Images/mongoose.1.png");
+    playerImage = loadImage("Images/Valentines/bunny.png");
+    flipImage = loadImage("Images/Valentines/bunnyFlipped.png");
     canvas = createCanvas(1500, 700);
     backgroundSprite1 = createSprite(width / 2, height / 2, 0, 0);
     backgroundSprite1.addImage(backgroundImage);
+    backgroundSprite1.addAnimation("second", backgroundImage2);
     backgroundSprite2 = createSprite(width / 2 + backgroundImage.width, height / 2, 0, 0);
     backgroundSprite2.addImage(backgroundImage);
+    backgroundSprite2.addAnimation("second", backgroundImage2);
     player = createSprite(playerImage.width / 2, height - (playerImage.height / 2), 0, 0);
     player.addAnimation("front",playerImage);
     player.addAnimation("back",flipImage);
@@ -70,7 +73,7 @@ function setup() {
     gravity = 0.4;
     //enemies
     enemies = new Group();
-    numEnemies = 20;
+    numEnemies = 25;
     rangeEnemies = 3*foodRange;
     projectiles = new Group();
     projectileStored = 0;
@@ -134,14 +137,14 @@ function draw() {
 function enemyMove(){
     for(var i=0; i<numEnemies; i++){
         if(Math.abs(player.position.x - enemies.get(i).position.x) <= width){
-            enemies.get(i).position.x -= 3.5;
+            enemies.get(i).position.x -= 3;
         }
     }
 }
 
 function playerShoot(){
     for(var i=0; i<projectiles.size(); i++){
-        projectiles.get(i).position.x += 10;
+        projectiles.get(i).position.x += 15;
     }
     for(var i=0; i<projectiles.size(); i++){
         if(Math.abs(player.position.x - projectiles.get(i).position.x) >= width){
@@ -178,11 +181,11 @@ function keyReleased(){
 
 function playerMove() {
     if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) {
-        player.position.x -= 4;
+        player.position.x -= 5;
         player.changeAnimation("back");
     }
     if (keyIsDown(68) || keyIsDown(RIGHT_ARROW)) {
-        player.position.x += 4;
+        player.position.x += 5;
         player.changeAnimation("front");
     }
 
@@ -212,8 +215,8 @@ function lvlUp() {
     level++;
     if (level === 2) {
         checkBound++;
-        playerImage = loadImage("Images/giraffe.png");
-        flipImage = loadImage("Images/giraffe.1.png")
+        playerImage = loadImage("Images/Valentines/samoyed.png");
+        flipImage = loadImage("Images/Valentines/samoyedFlipped.png")
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");
@@ -226,8 +229,8 @@ function lvlUp() {
     }
     if (level === 3) {
         checkBound++;
-        playerImage = loadImage("Images/brachiosaurus.png");
-        flipImage = loadImage("Images/brachiosaurus.1.png");
+        playerImage = loadImage("Images/Valentines/Magoose.png");
+        flipImage = loadImage("Images/Valentines/Magoose.png");
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");
@@ -237,6 +240,11 @@ function lvlUp() {
             tree.addImage(treeImage);
             food.push(tree);
         }
+        myAudio.pause();
+        myAudio = new Audio("Images/Valentines/music.mp3");
+        myAudio.play();
+        backgroundSprite1.changeAnimation("second");
+        backgroundSprite2.changeAnimation("second");
     }
 }
 
@@ -271,6 +279,7 @@ function gameWon(){
     fill("white");
     text("You Win! Yay!!!!!!", camera.position.x, camera.position.y);
     text("Press R to restart", camera.position.x, (camera.position.y)+30);
+    text("Tell Daniel the secret code: \"I pooped, but did not wipe\" for a secret prize!!!", camera.position.x, camera.position.y + height/2 -20);
     if(keyIsDown(82)){
         setup();
     }

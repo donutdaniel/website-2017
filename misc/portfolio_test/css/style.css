@@ -1,16 +1,45 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+@media(min-width:767px){
+    .navbar {
+        padding: 20px 0;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .top-nav-collapse{
+        padding: 0;
+    }
+}
+
 .page{
-  height:100vh;
+	height: 100vh;
+	padding-top: 10%;
+	text-align: center;
 }
 
-#page-first{
-  background-color:rgb(200,100,100);
+#page-intro{
+	padding-top: 15%;
+	background: #fff
 }
 
-#page-second{
+#page-about{
+    background: #fff134;
+}
+
+#page-projects{
   background-color:rgb(100,150,100);
 }
 
-#page-third{
+#page-contact{
   background-color:rgb(100,150,200);
 }
-

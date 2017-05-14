@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio</title>
+  <title>Daniel Ho</title>
   
-  
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  <!-- Bootstrap --> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-      <link rel="stylesheet" href="css/style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
   
 </head>
 
 <body>
-  <head>
-  <title>
-    Daniel Ho
-  </title>
-</head>
-
-<body class="container-fluid">
-  <nav class="navbar navbar-default navbar-fixed-top navbar-collapse">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#first-page">Daniel Ho</a>
+      <!-- For Mobile Display, Adds Menu Button -->
+      <div class ="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-id">
+          <span class="sr-only">Toggle Navigation</span> Menu <span class="fa fa-bars"></span>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-first">Daniel Ho</a>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#first-page">About</a></li>
-        <li><a href="#second-page">Portfolio</a></li>
-        <li><a href="#third-page">Contact</a></li>
-      </ul>
+
+      <!-- Buttons for Scrolling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse-id">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active hidden"><a href="#page-first"></a></li>
+          <li><a class="page-scroll" href="#page-first">About</a></li>
+          <li><a class="page-scroll" href="#page-second">Portfolio</a></li>
+          <li><a class="page-scroll" href="#page-third">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <div class="page row container-fluid" id="first-page">
+  <div class="page row container-fluid" id="page-first">
     <div class="row">
       <div class="col-md-3">
       </div>
@@ -45,16 +51,15 @@
       </div>
     </div>
     </div>
-    <div class="page row container-fluid" id="second-page">
+    <div class="page row container-fluid" id="page-second">
       sdfsd
     </div>
-    <div class="page row container-fluid" id="third-page">
+    <div class="page row container-fluid" id="page-third">
       sdfsdf
   </div>
 </body>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
-    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
 
-</body>
 </html>

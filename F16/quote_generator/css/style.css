@@ -1,0 +1,28 @@
+body{
+  background-color:#0000000;
+}
+
+.quote-block{
+  margin-top:25%;
+}
+
+#quote{
+  font-size:20px;
+}
+
+#generate{
+  border:1px solid black;
+  background-color:white;
+}
+
+.btn-twitter{
+  background:#55ACEE;
+}
+
+.fa-twitter{
+  color:white;
+}
+
+#actualQuoteBlock{
+  background-color:white;
+}

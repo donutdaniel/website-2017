@@ -1,0 +1,16 @@
+.page{
+  height:100vh;
+}
+
+#first-page{
+  background-color:rgb(200,100,100);
+}
+
+#second-page{
+  background-color:rgb(100,150,100);
+}
+
+#third-page{
+  background-color:rgb(100,150,200);
+}
+

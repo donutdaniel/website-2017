@@ -1,3 +1,4 @@
+/*General*/
 body{
     width: 100%;
     height: 100%;
@@ -12,7 +13,6 @@ html{
 	border-radius: 50%;
 	overflow: hidden;
 }
-
 #profile-picture{
 	vertical-align: middle;
 	width: 60%;
@@ -24,7 +24,6 @@ html{
 	/*margin-top: 30px;*/
 	margin-bottom: 30px;
 }
-
 .about-picture{
 	width: 150px;
 	height: 150px;
@@ -152,4 +151,61 @@ html{
 
 #page-contact{
   background: #F5F5F5;
+}
+
+
+/*Cards*/
+.card-item {
+    margin: 0 0 15px;
+    right: 0
+
+}
+
+.card-item .card-link {
+    display: block;
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto
+}
+
+.card-item .card-link .card-hover {
+    background: #00c07f;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all ease .5s;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s
+}
+
+.card-item .card-link .card-hover:hover {
+    opacity: 0.9;
+}
+
+.card-item .card-link .card-hover .card-hover-content {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+    top: 50%;
+    margin-top: -12px;
+    color: #fff
+}
+
+.card-item .card-link .card-hover .card-hover-content i{
+	margin-top:-12px
+}
+
+.card-item .card-link .card-hover .card-hover-content h3,
+.card-item .card-link .card-hover .card-hover-content h4 {
+    margin-top: 0;
+}
+
+@media (min-width:767px) {
+    .card-item {
+        margin: 0 0 30px
+    }
 }

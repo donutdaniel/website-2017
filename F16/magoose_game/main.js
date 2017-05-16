@@ -279,9 +279,8 @@ function gameWon(){
     background(0, 200);
     textAlign(CENTER);
     fill("white");
-    text("You Win! Yay!!!!!!", camera.position.x, camera.position.y);
+    text("You Win! Congrats!", camera.position.x, camera.position.y);
     text("Press R to restart", camera.position.x, (camera.position.y)+30);
-    text("Tell Daniel the secret code: \"I pooped, but did not wipe\" for a secret prize!!!", camera.position.x, camera.position.y + height/2 -20);
     if(keyIsDown(82)){
         setup();
     }

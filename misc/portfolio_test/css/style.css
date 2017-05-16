@@ -66,16 +66,16 @@ html{
 	letter-spacing: 1px
 }
 .navbar-custom .nav li a:focus,.navbar-custom .nav li a:hover{
-	color: #00c07f;
+	color: #00C07F;
 	outline: 0
 }
 .navbar-custom .navbar-nav>.active>a{
 	color: #FFFFFF;
-	background-color: #00c07f
+	background-color: #00C07F
 }
 .navbar-custom .navbar-nav>.active>a:focus,.navbar-custom .navbar-nav>.active>a:hover{
 	color: #FFFFFF;
-	background-color: #00c07f
+	background-color: #00C07F
 }
 @media(min-width:767px){
     .navbar-custom{
@@ -118,6 +118,7 @@ html{
 	font-size: 20px;
 	margin-top: 20px;
 	border-width: 0.8px;
+	border-color: #FFFFFF;
 	background-color: transparent;
 	color: #FFFFFF;
 }
@@ -147,6 +148,16 @@ html{
 
 #page-projects{
   background: #E8E8E8;
+  padding-bottom: 5%;
+}
+
+#projects-btn{
+	font-size: 20px;
+	margin-top: 20px;
+	border-width: 0px;
+	border-color: #FFFFFF;
+	background-color: #00C07F;
+	color: #FFFFFF;
 }
 
 #page-contact{
@@ -158,7 +169,6 @@ html{
 .card-item {
     margin: 0 0 15px;
     right: 0
-
 }
 
 .card-item .card-link {
@@ -166,11 +176,11 @@ html{
     position: relative;
     max-width: 300px;
     max-height: 300px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .card-item .card-link .card-hover {
-    background: #00c07f;
+    background: #00C07F;
     position: absolute;
     width: 100%;
     height: 100%;

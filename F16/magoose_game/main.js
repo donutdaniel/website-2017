@@ -230,8 +230,8 @@ function lvlUp() {
     }
     if (level === 3) {
         checkBound++;
-        playerImage = loadImage("Images/Valentines/Magoose.png");
-        flipImage = loadImage("Images/Valentines/Magoose.png");
+        playerImage = loadImage("Images/pepe.png");
+        flipImage = loadImage("Images/pepe.png");
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");

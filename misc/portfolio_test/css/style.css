@@ -174,8 +174,8 @@ html{
 .card-item .card-link {
     display: block;
     position: relative;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 400px;
+    max-height: 400px;
     margin: 0 auto;
 }
 

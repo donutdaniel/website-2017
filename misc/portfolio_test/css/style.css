@@ -7,33 +7,61 @@ html{
     height: 100%;
 }
 
+/*Images*/
+.circular{
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+#profile-picture{
+	vertical-align: middle;
+	width: 60%;
+	height: 60%;
+	max-width: 400px;
+	border-style: solid;
+	border-color: #FFFFFF;
+	border-width: 0px;
+	/*margin-top: 30px;*/
+	margin-bottom: 30px;
+}
+
+.about-picture{
+	width: 150px;
+	height: 150px;
+	margin: 10px;
+	border-style: solid;
+	border-color: #FFFFFF;
+	border-width: 2px;
+}
+
 /*Navbar*/
 .navbar-custom{
 	background-color: #2C2C2C;
 	border-color: transparent;
 }
 .navbar-custom .navbar-brand{
-	color: #00c07f;
+	color: #FFFFFF;
 	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,sans-serif
 }
 .navbar-custom .navbar-brand.active,.navbar-custom .navbar-brand:active,.navbar-custom .navbar-brand:focus,.navbar-custom .navbar-brand:hover{
-	color:#00c07f
+	color: #FFFFFF
 }
 .navbar-custom .nav li a,.navbar-custom .navbar-toggle{
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-	color: #ffffff;
+	color: #FFFFFF;
 	text-transform: uppercase
 }
 .navbar-custom .navbar-collapse{
 	border-color: #5C5C5C
 }
 .navbar-custom .navbar-toggle{
-	background-color: #00c07f;
-	border-color: #2C2C2C;
+	background-color: transparent;
+	border-color: #FFFFFF;
+	border-width: 0.8px;
 	font-size: 12px
 }
 .navbar-custom .navbar-toggle:focus,.navbar-custom .navbar-toggle:hover{
-	background-color: #00c07f
+	background-color: #5B5B5B;
 }
 .navbar-custom .nav li a{
 	letter-spacing: 1px
@@ -43,11 +71,11 @@ html{
 	outline: 0
 }
 .navbar-custom .navbar-nav>.active>a{
-	color: #ffffff;
+	color: #FFFFFF;
 	background-color: #00c07f
 }
 .navbar-custom .navbar-nav>.active>a:focus,.navbar-custom .navbar-nav>.active>a:hover{
-	color: #ffffff;
+	color: #FFFFFF;
 	background-color: #00c07f
 }
 @media(min-width:767px){
@@ -68,41 +96,60 @@ html{
 .page{
 	min-height: 100%;
 	min-height: 100vh;
-	padding-top: 10%;
-	padding-bottom: 10%;
 	text-align: center;
 }
 
 .page-intro{
 	padding-top: 20%;
 	padding-bottom: 30%;
-	background: #ffffff;
+	background: #FFFFFF;
 }
 #intro-title{
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-	color: #ffffff;
-	font-size: 80px;
+	color: #FFFFFF;
+	font-size: 100px;
 }
 #intro-text{
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-	color: #ffffff;
-	font-size: 20px;
+	color: #FFFFFF;
+	font-size: 30px;
 	border-radius: 200px, 200px, 200px, 200px;
 }
 #intro-btn{
+	font-size: 20px;
+	margin-top: 20px;
 	border-width: 0.8px;
 	background-color: transparent;
-	color: #ffffff;
+	color: #FFFFFF;
+}
+
+.section-header{
+	font-size: 40px;
+	padding-top: 5%;
+	padding-bottom: 5%;
 }
 
 #page-about{
-    background: #fff134;
+    background: #F5F5F5;
+}
+
+#about-caption{
+	padding-left: 5%;
+	padding-right: 5%;
+	font-size: 25px;
+}
+
+#about-text{
+	padding-left: 10%;
+	padding-right: 10%;
+	font-size: 15px;
+	line-height: 150%;
 }
 
 #page-projects{
-  background-color:rgb(100,150,100);
+  background: #E8E8E8;
 }
 
 #page-contact{
-  background-color:rgb(100,150,200);
+  background: #F5F5F5;
 }

@@ -14,8 +14,17 @@ $(function() {
     $(document).on('click', 'a.page-scroll', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
+            scrollTop: $($anchor.attr('href')).offset().top-50
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+});
+
+//Initialize navbar based on page
+$(document).ready(function(){
+    if ($(".navbar").offset().top > 50) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
 });

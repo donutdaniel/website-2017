@@ -15,12 +15,11 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/gradient.js"></script>
+  <script src="js/gradient.js"></script>
 </head>
 
 <!-- data-spy and data-target for Bootstrap scrollspy -->
-<body id="page-top" data-spy="scroll" data-target="#main-nav">
+<body id="page-top" data-spy="scroll" data-target="#main-nav" data-offset="51">
 
   <!-- Navigation -->
   <nav id="main-nav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -28,7 +27,7 @@
       <!-- For Mobile Display, Adds Menu Button -->
       <div class ="navbar-header page-scroll">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-id">
-          <span class="sr-only">Toggle Navigation</span> Menu <i class="fa fa-bars"></i>
+          <span class="sr-only">Toggle Navigation</span><i class="fa fa-bars fa-lg"></i>
         </button>
         <a class="navbar-brand page-scroll" href="#page-top">Daniel Ho</a>
       </div>
@@ -62,9 +61,19 @@
   <section id="page-about" class="page">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="section-heading">About</h1>
-          <h2 class="section-subheading text-muted">Hello</h2>
+        <div class="col-md-12 text-center">
+          <h1 class="section-header">About Me</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img id="profile-picture" class="circular" src="images/profile.jpg"/>
+        </div>
+        <div class="col-md-6">
+          <h2 id="about-caption text-center">Hi! I like to code, build things, and make friends.</h2><br>
+          <p id="about-text" class="text-left">My name is Daniel and I am currently a sophomore studying Computer Science and Engineering at the <a href="http://www.usc.edu/">Unviersity of Southern California</a>. I develop software and hardware with a passion and aspire to create with meaningful and impactful results.<br><br>I'm always looking forward to learning more through challenging myself with projects and work outside of school. While I am available and searching for work this summer, I continue to expand my area of expertise by delving into new technologies as well as honing familiar ones.</p><br>
         </div>
       </div>
     </div>
@@ -75,8 +84,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="section-heading">Projects</h1>
-          <h2 class="section-subheading text-muted">Hello</h2>
+          <h1 class="section-header">Projects</h1>
         </div>
       </div>
     </div>
@@ -87,8 +95,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="section-heading">Contact</h1>
-          <h2 class="section-subheading text-muted">Hello</h2>
+          <h1 class="section-header">Contact</h1>
         </div>
       </div>
     </div>

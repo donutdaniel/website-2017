@@ -99,7 +99,7 @@ html{
 }
 
 .page-intro{
-	padding-top: 20%;
+	padding-top: 230px;
 	padding-bottom: 30%;
 	background: #FFFFFF;
 }
@@ -158,20 +158,42 @@ html{
 	border-color: #FFFFFF;
 	background-color: #00C07F;
 	color: #FFFFFF;
+	opacity: 0.8;
+}
+
+#projects-btn:hover{
+	opacity: 1;
 }
 
 #page-contact{
-  background: #F5F5F5;
+ 	background: #F5F5F5;
+ 	min-height: 70%;
+ 	text-align: center;
 }
 
+#contact-text{
+	font-size: 20px;
+}
+
+footer{
+	height: 200px;
+	background: #2C2C2C;
+	padding-top: 80px;
+}
+
+#footnotes{
+	font-size: 12px;
+	margin-top: 40px;
+	color: #808080;
+}
 
 /*Cards*/
-.card-item {
+#page-projects .card-item {
     margin: 0 0 15px;
     right: 0
 }
 
-.card-item .card-link {
+#page-projects .card-item .card-link {
     display: block;
     position: relative;
     max-width: 400px;
@@ -179,7 +201,7 @@ html{
     margin: 0 auto;
 }
 
-.card-item .card-link .card-hover {
+#page-projects .card-item .card-link .card-hover {
     background: #00C07F;
     position: absolute;
     width: 100%;
@@ -190,11 +212,11 @@ html{
     -moz-transition: all ease .5s
 }
 
-.card-item .card-link .card-hover:hover {
+#page-projects .card-item .card-link .card-hover:hover {
     opacity: 0.9;
 }
 
-.card-item .card-link .card-hover .card-hover-content {
+#page-projects .card-item .card-link .card-hover .card-hover-content {
     position: absolute;
     width: 100%;
     height: 20px;
@@ -205,17 +227,36 @@ html{
     color: #fff
 }
 
-.card-item .card-link .card-hover .card-hover-content i{
+#page-projects .card-item .card-link .card-hover .card-hover-content i{
 	margin-top:-12px
 }
 
-.card-item .card-link .card-hover .card-hover-content h3,
-.card-item .card-link .card-hover .card-hover-content h4 {
-    margin-top: 0;
+#page-projects .card-item .card-link .card-hover .card-hover-content h3,
+#page-projects .card-item .card-link .card-hover .card-hover-content h4 {
+    margin: 0;
 }
 
 @media (min-width:767px) {
-    .card-item {
+    #page-projects .card-item {
         margin: 0 0 30px
     }
+}
+
+/*misc*/
+.btn-social{
+	border-style: solid;
+	border-width: 0px;
+	border-color: #FFFFFF;
+	min-width: 0px;
+	min-height: 0px;
+	color: #FFFFFF;
+}
+
+.btn-social:hover{
+	color: #6A6A6A;
+}
+
+.list-inline>li{
+	margin-right: 10px;
+	margin-left: 10px;
 }

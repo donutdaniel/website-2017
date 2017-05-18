@@ -111,10 +111,10 @@ html{
 	text-align: center;
 }
 
-.page-intro{
+#page-intro{
 	padding-top: 230px;
-	padding-bottom: 30%;
-	background: #FFFFFF;
+	background: transparent;
+	z-index: 2;
 }
 #intro-title{
 	font-family: "Helvetica Neue Thin","Helvetica Neue Light","Helvetica Neue", Helvetica, sans-serif;
@@ -285,4 +285,16 @@ footer{
 .list-inline>li{
 	margin-right: 10px;
 	margin-left: 10px;
+}
+
+/*particlesjs*/
+#particles-js{
+	position:absolute; 
+	width: 100%; 
+	height: 100%; 
+	background-color: #229B42; 
+	background-image: url(""); 
+	background-repeat: no-repeat; 
+	background-size: cover; 
+	background-position: 50% 50%; 
 }

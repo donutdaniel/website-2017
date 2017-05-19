@@ -114,7 +114,7 @@ html{
 #page-intro{
 	padding-top: 230px;
 	padding-top: 30vh;
-	background: transparent;
+	background: #229BB2;
 	z-index: 2;
 }
 #intro-title{
@@ -292,10 +292,10 @@ footer{
 #particles-js{
 	position:absolute; 
 	width: 100%; 
-	height: 100%;
-	height: 100vh; 
-	background-color: #229B22; 
-	background-image: url(""); 
+	height: 100vh;
+	min-height: 100%; 
+	background-color: #229BB2; 
+	background-image: url("");6
 	background-repeat: no-repeat; 
 	background-size: cover; 
 	background-position: 50% 50%; 

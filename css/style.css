@@ -112,8 +112,6 @@ html{
 }
 
 #page-intro{
-	padding-top: 230px;
-	padding-top: 30vh;
 	background: #229BB2;
 	z-index: 2;
 }
@@ -121,11 +119,13 @@ html{
 	font-family: "Helvetica Neue Thin","Helvetica Neue Light","Helvetica Neue", Helvetica, sans-serif;
 	color: #FFFFFF;
 	font-size: 100px;
+	margin-top: 230px;
+	margin-top: 30vh;
 }
 #intro-text{
 	font-family: "Helvetica Neue Thin","Helvetica Neue Light","Helvetica Neue", Helvetica, sans-serif;
 	color: #FFFFFF;
-	font-size: 30px;
+	font-size: 20px;
 	border-radius: 200px, 200px, 200px, 200px;
 }
 #intro-btn{

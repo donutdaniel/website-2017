@@ -271,6 +271,24 @@ footer{
     }
 }
 
+/*modals*/
+.modal-title{
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 20px;
+	display: inline;
+}
+
+.modal-body-text{
+	font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.modal-btn{
+	font-family: "Helvetica Neue Light", Helvetica, sans-serif;
+	font-size: 18px;
+}
+
 /*misc*/
 .btn-social{
 	border-style: solid;

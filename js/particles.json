@@ -36,7 +36,7 @@
       }
     },
     "size": {
-      "value": 4,
+      "value": 4.5,
       "random": true,
       "anim": {
         "enable": false,
@@ -49,7 +49,7 @@
       "enable": true,
       "distance": 200,
       "color": "#ffffff",
-      "opacity": 0.4,
+      "opacity": 0.5,
       "width": 1.5
     },
     "move": {
@@ -82,20 +82,20 @@
     },
     "modes": {
       "grab": {
-        "distance": 800,
+        "distance": 200,
         "line_linked": {
           "opacity": 1
         }
       },
       "bubble": {
         "distance": 800,
-        "size": 80,
+        "size": 10,
         "duration": 2,
         "opacity": 0.8,
         "speed": 3
       },
       "repulse": {
-        "distance": 400,
+        "distance": 200,
         "duration": 0.4
       },
       "push": {

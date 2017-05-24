@@ -138,6 +138,9 @@ html{
 	color: #FFFFFF;
 	margin-bottom: 10vh;
 }
+#intro-btn:hover{
+	background-color: rgba(255,255,255,0.1);
+}
 
 .section-header{
 	font-size: 50px;

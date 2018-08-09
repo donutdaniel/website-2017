@@ -36,11 +36,11 @@ myAudio.play();
 function preload() {
     //playerImage = loadImage("Images/mongoose.png");
     //flipImage = loadImage("Images/mongoose.1.png");
-    backgroundImage = loadImage("Images/background.png");
-    backgroundImage2 = loadImage("Images/Valentines/background.png");
-    ratImage = loadImage("Images/Valentines/carrot.png");
-    leafImage = loadImage("Images/Valentines/heart.png");
-    treeImage = loadImage("Images/Valentines/ZacEfron.png");
+    backgroundImage = loadImage("Images/background1.png");
+    backgroundImage2 = loadImage("Images/background2.png");
+    ratImage = loadImage("Images/rat.png");
+    leafImage = loadImage("Images/leaf.png");
+    treeImage = loadImage("Images/palmTree.png");
     //enemies
     enemyImage = loadImage("Images/cactus.png");
     //projectiles
@@ -57,8 +57,8 @@ function setup() {
     level = 1;
     lose = false;
     //rest
-    playerImage = loadImage("Images/Valentines/bunny.png");
-    flipImage = loadImage("Images/Valentines/bunnyFlipped.png");
+    playerImage = loadImage("Images/mongoose.png");
+    flipImage = loadImage("Images/mongoose1.png");
     canvas = createCanvas(1500, 700);
     backgroundSprite1 = createSprite(width / 2, height / 2, 0, 0);
     backgroundSprite1.addImage(backgroundImage);
@@ -215,8 +215,8 @@ function lvlUp() {
     level++;
     if (level === 2) {
         checkBound++;
-        playerImage = loadImage("Images/Valentines/samoyed.png");
-        flipImage = loadImage("Images/Valentines/samoyedFlipped.png")
+        playerImage = loadImage("Images/giraffe.png");
+        flipImage = loadImage("Images/giraffe1.png")
         player.addAnimation("front", playerImage);
         player.addAnimation("back", flipImage);
         player.changeAnimation("front");
@@ -241,9 +241,6 @@ function lvlUp() {
             tree.addImage(treeImage);
             food.push(tree);
         }
-        myAudio.pause();
-        myAudio = new Audio("Images/Valentines/music.mp3");
-        myAudio.play();
         backgroundSprite1.changeAnimation("second");
         backgroundSprite2.changeAnimation("second");
         projectileStored += 10;
